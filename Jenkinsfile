@@ -5,9 +5,16 @@ pipeline {
         MY_VAR = 'une variable'
         MY_NUMBER = 123
     }
+
+    options {
+       timeout(time:1,unit:'HOURS')
+    }
     
     stages {
         stage('Build'){
+            options {
+                timestamps()
+            }
             steps{
                 echo "BRANCH_NAME : ${ env.BRANCH_NAME}"
                 echo "BRANCH_IS_PRIMARY : ${ env.BRANCH_IS_PRIMARY}"
