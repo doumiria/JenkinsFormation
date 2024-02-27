@@ -1,30 +1,23 @@
 pipeline {
     agent any
 
-    environment {
-        MY_VAR = 'une variable'
-        MY_NUMBER = 123
+    parameters  {
+        string(name: 'NAME', defaultValue : 'ASSIA', description: 'Your name ?')
+        text(name: 'TEXT', defaultValue : 'Jenkins formation', description: 'More details...')
+        booleanParam(name: 'FEMALE', defaultValue : true , description: 'Your sex?')
+        choice(name: 'CHOICE', choices:['java','c++','vb'], description: 'Your language?')
+        password(name:'PASSWORD',description : 'your password?')
     }
-
-    options {
-       timeout(time:1,unit:'HOURS')
-    }
-    
     stages {
         stage('Build'){
-            options {
-                timestamps()
-            }
-            steps{
-                echo "BRANCH_NAME : ${ env.BRANCH_NAME}"
-                echo "BRANCH_IS_PRIMARY : ${ env.BRANCH_IS_PRIMARY}"
-                echo "CI : ${ env.CI}"
-                echo "BUILD_NUMBER : ${ env.BUILD_NUMBER}"
-                echo "JENKINS_URL : ${ env.JENKINS_URL}"
-                echo "MY_VAR : ${ env.MY_VAR}"
-                echo "MY_NUMBER : ${ env.MY_NUMBER}"
-                sh 'printenv'
-            }
+          steps{ 
+            echo "NAME : ${ NAME }"
+            echo "TEXT : ${ TEXT }"
+            echo "FEMALE : ${ FEMALE }"
+            echo "CHOICE : ${ CHOICE }"
+            echo "PASSWORD : ${ PASSWORD }"
+          }
+
         }
       
     }
