@@ -17,7 +17,7 @@ pipeline {
 
             stage('Build backend'){
                   steps{ 
-                    echo 'Build backend !'
+                    echoo 'Build backend !'
                   }
                 }    
           }
