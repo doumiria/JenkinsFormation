@@ -1,13 +1,13 @@
 pipeline {
     agent any
 
-    //options{
-      //parallelAlwaysFailFast()
-    //}
+    options{
+      parallelAlwaysFailFast()
+    }
 
     stages {
         stage('Build'){
-          failFast true
+          //failFast true
           parallel{ 
            stage('Build frontend'){
                   steps{ 
@@ -17,7 +17,7 @@ pipeline {
 
             stage('Build backend'){
                   steps{ 
-                    echoo 'Build backend !'
+                    echo 'Build backend !'
                   }
                 }    
           }
