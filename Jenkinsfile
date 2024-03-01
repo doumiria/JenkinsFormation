@@ -1,26 +1,29 @@
 pipeline {
     agent any
 
-    parameters{
-      booleanParam(name: 'DEPLOY_TO', defaultValue:false, description: 'production ?'  )
-    }
+    //options{
+      //parallelAlwaysFailFast()
+    //}
 
     stages {
         stage('Build'){
-          steps{ 
-            echo 'Build !'
+          failFast true
+          parallel{ 
+           stage('Build frontend'){
+                  steps{ 
+                    echo 'Build frontend !'
+                  }
+                }
+
+            stage('Build backend'){
+                  steps{ 
+                    echo 'Build backend !'
+                  }
+                }    
           }
         }
 
          stage('Deployement production'){
-          
-          when{ 
-            anyOf{
-            branch 'masterX'
-            expression { params.DEPLOY_TO}
-            }
-          }
-
           steps{ 
             echo 'Deploy !'
           }
