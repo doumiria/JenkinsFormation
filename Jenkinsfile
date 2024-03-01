@@ -13,7 +13,7 @@ pipeline {
            message 'Voulez-vous deployer en production ?'
            ok 'deployer !'
            submitter 'admin,devops'
-           sumbitParameter 'USER_SUBMIT'
+           sumbitterParameter 'USER_SUBMIT'
            parameters { 
              string(name: 'VERSION', defaultValue: 'latest', description: 'une version')
            }
