@@ -15,8 +15,8 @@ pipeline {
          stage('Deployement production'){
           
           when{ 
-            allOf{
-            branch 'master'
+            anyOf{
+            branch 'masterX'
             expression { params.DEPLOY_TO}
             }
           }
