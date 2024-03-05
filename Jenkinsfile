@@ -4,7 +4,7 @@ pipeline {
 
     tools {
       gradle 'Gradle8.7'
-      nodejs 'NodeJs21.6.2'
+      nodejs 'NodeJs21'
     }
     stages {
      stage('build')
