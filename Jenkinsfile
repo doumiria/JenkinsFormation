@@ -1,33 +1,38 @@
 pipeline {
     agent any
 
-    options{
-      parallelsAlwaysFailFast()
-    }
-
     stages {
-        stage('Build'){
-          //failFast true
-          parallel{ 
-           stage('Build frontend'){
+        stage('Build and test'){
+          
+          matrix{ 
+           axes {
+            axis {
+              name 'PLATFORM'
+              values 'linux','macos','windows'
+            }
+
+              axis {
+              name 'BROWSER'
+              values 'firefox','chrome','safari'
+            }
+
+           }
+          }
+        }
+        stages {
+                stage('build'){
                   steps{ 
-                    echo 'Build frontend !'
+                    echo 'Construire pour ${ PLATFORM} -  ${ BROWSER}!'
                   }
                 }
 
-            stage('Build backend'){
+                 stage('test'){
                   steps{ 
-                    echo 'Build backend !'
+                    echo 'Test pour ${ PLATFORM} -  ${ BROWSER}!'
                   }
-                }    
-          }
+                }
         }
-
-         stage('Deployement production'){
-          steps{ 
-            echo 'Deploy !'
-          }
-        }
+        
     }
     
 }
