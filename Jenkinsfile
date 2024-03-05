@@ -20,13 +20,13 @@ pipeline {
             stages {
              stage('build'){
                   steps{ 
-                    echo 'Construire pour ${ PLATFORM} -  ${ BROWSER}!'
+                    echo "Construire pour ${ PLATFORM} -  ${ BROWSER}!"
                   }
             }
 
                 stage('test'){
                 steps{ 
-                    echo 'Test pour ${ PLATFORM} -  ${ BROWSER}!'
+                    echo "Test pour ${ PLATFORM} -  ${ BROWSER}!"
                 }
             }
         }
