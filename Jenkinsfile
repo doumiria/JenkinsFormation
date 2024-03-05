@@ -17,8 +17,7 @@ pipeline {
                 }
 
            }
-        }
-        stages {
+            stages {
              stage('build'){
                   steps{ 
                     echo 'Construire pour ${ PLATFORM} -  ${ BROWSER}!'
@@ -31,6 +30,8 @@ pipeline {
                 }
             }
         }
+        }
+       
 
      }
 }
