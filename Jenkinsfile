@@ -15,7 +15,7 @@ pipeline {
 post{
      success
      {
-       emailext (to:'adoumiri@gmail.com',body:'test body',subject:'test subject')
+       emailext (to:'jeanr@port-montreal.com',body:'test body',subject:'test subject')
      }
 }
 
